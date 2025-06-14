@@ -12,13 +12,23 @@ function Home() {
       .then(res => setBlogs(res.data))
       .catch(err => console.log(err));
     }, []);
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/blogs/${id}`);
+            setBlogs(prev => prev.filter(blog => blog._id !== id));
+        } catch (err) {
+            console.log('Error deleting blog:',err);
+            
+        }
+    }
     
   return (
     <div>
       <Link to="/create">➕ Create New Blog</Link>
       <h2>All Blogs</h2>
       {blogs.map(blog => (
-        <BlogItem key={blog._id} blog={blog} />
+        <BlogItem key={blog._id} blog={blog} onDelete={handleDelete} />
       ))}
     </div>
   );
