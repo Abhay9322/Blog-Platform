@@ -26,7 +26,7 @@ Users can **Create**, **Read**, **Update**, and **Delete** blog posts (CRUD oper
 - Node.js
 - Express.js
 - MongoDB (with Mongoose)
-- CORS and dotenv
+- CORS 
 
 ---
 
